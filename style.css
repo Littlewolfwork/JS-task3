@@ -1,0 +1,37 @@
+table {
+    border-collapse:collapse;
+}
+
+td {
+    width:60px;
+    height:60px;
+    border:1px gray solid;
+    transition-property: background-color;
+    transition-duration: 500ms;
+
+}
+
+.color1 {
+    background-color:#FF0000;
+}
+.color2 {
+    background-color:#21DC12;
+}
+.color3 {
+    background-color:#D9DC12;
+}
+.color4 {
+    background-color:#002EFF;
+}
+.color5 {
+    background-color:#FFFF00;
+}
+.color6 {
+    background-color:#800080;
+}
+.color7 {
+    background-color:#00FFFF;
+}
+.color8 {
+    background-color:#FFD700;
+}
