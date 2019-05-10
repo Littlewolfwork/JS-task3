@@ -18,10 +18,27 @@ for (let i = 0; i < 4; i++){
     indexColors.push(tempColors);
 }
 
+function add0 (x, y) {let s = '00' + x; return s.substr (s.length - y)}
+let RAF;
+let startTime;
+function Tick ()
+{
+    let ms = Date.now() - startTime;
+    let S = Math.floor(ms / 1000);
+    ms = ms % 1000;
+    let M = Math.floor(S / 60);
+    S = S % 60;
+    document.querySelector("#timer").textContent = [add0(M, 2), add0(S, 2), add0(ms, 3)].join (':');
+    RAF = requestAnimationFrame(Tick);
+}
+
 console.log(indexColors);
 console.log(indexColors[0][0]);
 let btn = document.querySelector('#btn');
 btn.addEventListener("click", function(){
+    startTime = Date.now();
+    Tick();
+
 
 });
 
@@ -48,6 +65,11 @@ function clickHandler(event) {
                 this.classList.add("color"+indexColors[rowIndex][cellIndex]);
                 openCell.classList.add("stable");
                 openCell.classList.remove("open");
+                if (document.querySelectorAll(".stable").length>=16){
+                    cancelAnimationFrame(RAF);
+                    window.alert("Вы выиграли!\nЗатраченное время: "+document.querySelector("#timer").textContent);
+                }
+
             }
             else{
                 console.log("color not ok");
