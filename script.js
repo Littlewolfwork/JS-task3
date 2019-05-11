@@ -9,19 +9,6 @@ function shuffle(array) {
 // массив для хранения карты цветов клеток
 let indexColors = [];
 
-// промежуточный массив для обеспесения случайности пар цветов
-let randColors = [1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8];
-shuffle(randColors);
-let q = 0;
-for (let i = 0; i < 4; i++){
-    let tempColors = [];
-    for (let j = 0; j < 4; j++){
-        tempColors.push(randColors[q]);
-        q+=1;
-    }
-    indexColors.push(tempColors);
-}
-
 // выводит секунды, минуты и миллисекунды с нужным количеством нулей
 function add0 (x, y) {let s = '00' + x; return s.substr (s.length - y)}
 
@@ -46,6 +33,8 @@ function Tick ()
 //обработчик кнопки старт
 let btn = document.querySelector('#btn');
 btn.addEventListener("click", function(){
+    // TODO: Добавить обнуление таймера и карты клеток при повторном запуске
+
     startTime = Date.now();
     Tick();
     // пропишем ячейкам таблицы обработчик клика
@@ -54,8 +43,18 @@ btn.addEventListener("click", function(){
         arrayTd[i].addEventListener('click', clickHandler);
     }
 
-
-    // TODO: перенести генерацию карты клеток в эту функцию
+    // промежуточный массив для обеспесения случайности пар цветов
+    let randColors = [1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8];
+    shuffle(randColors);
+    let q = 0;
+    for (let i = 0; i < 4; i++){
+        let tempColors = [];
+        for (let j = 0; j < 4; j++){
+            tempColors.push(randColors[q]);
+            q+=1;
+        }
+        indexColors.push(tempColors);
+    }
 });
 
 
