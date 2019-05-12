@@ -35,12 +35,14 @@ let btn = document.querySelector('#btn');
 btn.addEventListener("click", function(){
     // TODO: Добавить обнуление таймера и карты клеток при повторном запуске
 
+
     startTime = Date.now();
     Tick();
     // пропишем ячейкам таблицы обработчик клика
     let arrayTd = document.querySelectorAll('td');
     for (let i = 0; i < arrayTd.length; i++) {
         arrayTd[i].addEventListener('click', clickHandler);
+        arrayTd[i].className="";
     }
 
     // промежуточный массив для обеспесения случайности пар цветов
