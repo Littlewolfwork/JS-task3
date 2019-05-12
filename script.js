@@ -33,18 +33,16 @@ function Tick ()
 //обработчик кнопки старт
 let btn = document.querySelector('#btn');
 btn.addEventListener("click", function(){
-    // TODO: Добавить обнуление таймера и карты клеток при повторном запуске
-
-
     startTime = Date.now();
     Tick();
+    indexColors = [];
+
     // пропишем ячейкам таблицы обработчик клика
     let arrayTd = document.querySelectorAll('td');
     for (let i = 0; i < arrayTd.length; i++) {
         arrayTd[i].addEventListener('click', clickHandler);
         arrayTd[i].className="";
     }
-
     // промежуточный массив для обеспесения случайности пар цветов
     let randColors = [1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8];
     shuffle(randColors);
